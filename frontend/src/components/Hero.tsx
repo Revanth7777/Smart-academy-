@@ -1,12 +1,29 @@
+import SiteImage from "@/components/SiteImage";
+import { siteImages } from "@/data/siteImages";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function Hero() {
+  const heroBackground = siteImages.hero.background;
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center pt-20 overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-900" />
+      {heroBackground && (
+        <>
+          <SiteImage
+            src={heroBackground}
+            alt="Smart Games & Academy"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-emerald-950/75" />
+        </>
+      )}
       <div
         className="absolute inset-0 opacity-20"
         style={{

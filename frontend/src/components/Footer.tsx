@@ -1,5 +1,6 @@
-import { Trophy } from "lucide-react";
 import { sports } from "@/data/sports";
+import { siteImages } from "@/data/siteImages";
+import { ACADEMY_PHONE_DISPLAY } from "@/lib/contact";
 
 const quickLinks = [
   { href: "/#home", label: "Home" },
@@ -16,10 +17,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-                <Trophy className="w-5 h-5 text-white" />
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              {siteImages.logo ? (
+                <img
+                  src={siteImages.logo}
+                  alt="Smart Games & Academy logo"
+                  className="h-10 w-auto max-w-[160px] object-contain shrink-0"
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 shrink-0" />
+              )}
               <span className="font-bold text-white text-lg">Smart Games & Academy</span>
             </div>
             <p className="text-sm leading-relaxed">
@@ -67,8 +74,8 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>123 Sports Complex Road</li>
               <li>Chennai - 600044</li>
-              <li>+91 98765 43210</li>
-              <li>info@sportsacademy.com</li>
+              <li>{ACADEMY_PHONE_DISPLAY}</li>
+              <li>smartgamesacademy2010@gmail.com</li>
             </ul>
           </div>
         </div>

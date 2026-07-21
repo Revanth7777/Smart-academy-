@@ -1,31 +1,21 @@
-const categories = [
-  {
-    title: "Training Sessions",
-    emoji: "🏋️",
-    gradient: "from-emerald-600 to-teal-600",
-    count: "24 photos",
-  },
-  {
-    title: "Competitions",
-    emoji: "🏆",
-    gradient: "from-amber-500 to-orange-600",
-    count: "18 photos",
-  },
-  {
-    title: "Medal Winners",
-    emoji: "🥇",
-    gradient: "from-yellow-400 to-amber-500",
-    count: "32 photos",
-  },
-  {
-    title: "Certificates",
-    emoji: "📜",
-    gradient: "from-blue-500 to-indigo-600",
-    count: "15 photos",
-  },
-];
+import SiteImage from "@/components/SiteImage";
+import {
+  galleryCategories,
+  getGalleryImages,
+  siteImages,
+} from "@/data/siteImages";
 
 export default function Gallery() {
+  const allImages = galleryCategories.flatMap((cat) =>
+    getGalleryImages(cat.id).map((img) => ({ ...img, category: cat.title }))
+  );
+
+  const hasGalleryImages =
+    siteImages.gallery.training.length > 0 ||
+    siteImages.gallery.competitions.length > 0 ||
+    siteImages.gallery.medals.length > 0 ||
+    siteImages.gallery.certificates.length > 0;
+
   return (
     <section id="gallery" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,29 +26,90 @@ export default function Gallery() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((cat) => (
-            <div
-              key={cat.title}
-              className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer card-hover"
-            >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {galleryCategories.map((cat) => {
+            const images = getGalleryImages(cat.id);
+            const cover = images[0];
+
+            return (
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${cat.gradient} flex flex-col items-center justify-center text-white p-6`}
+                key={cat.id}
+                className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer card-hover"
               >
-                <span className="text-5xl mb-4 group-hover:scale-110 transition-transform">
-                  {cat.emoji}
-                </span>
-                <h3 className="text-lg font-bold text-center">{cat.title}</h3>
-                <p className="text-sm text-white/80 mt-1">{cat.count}</p>
+                {cover ? (
+                  <>
+                    <SiteImage
+                      src={cover.src}
+                      alt={cover.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+                  </>
+                ) : (
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${cat.gradient} flex flex-col items-center justify-center text-white p-6`}
+                  >
+                    <span className="text-5xl mb-4 group-hover:scale-110 transition-transform">
+                      {cat.emoji}
+                    </span>
+                  </div>
+                )}
+
+                <div className="absolute inset-0 flex flex-col items-center justify-end p-6 text-white">
+                  <h3 className="text-lg font-bold text-center">{cat.title}</h3>
+                  <p className="text-sm text-white/80 mt-1">
+                    {images.length > 0
+                      ? `${images.length} photo${images.length === 1 ? "" : "s"}`
+                      : "Add photos to public/images"}
+                  </p>
+                </div>
+
+                <div className="absolute inset-0 flex items-end justify-center pb-16 pointer-events-none">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white font-semibold text-sm bg-white/20 backdrop-blur px-4 py-2 rounded-full">
+                    View Gallery
+                  </span>
+                </div>
               </div>
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-end justify-center pb-6">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white font-semibold text-sm bg-white/20 backdrop-blur px-4 py-2 rounded-full">
-                  View Gallery
-                </span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {allImages.length > 0 && (
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 mb-6">Recent photos</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {allImages.map((img) => (
+                <div
+                  key={img.src}
+                  className="relative aspect-square rounded-xl overflow-hidden bg-gray-100"
+                >
+                  <SiteImage
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {!hasGalleryImages && (
+          <p className="text-center text-sm text-gray-500">
+            Drop image files into{" "}
+            <code className="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
+              frontend/public/images/
+            </code>{" "}
+            and list them in{" "}
+            <code className="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
+              src/data/siteImages.ts
+            </code>
+          </p>
+        )}
       </div>
     </section>
   );

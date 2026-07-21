@@ -1,4 +1,6 @@
 import Link from "next/link";
+import SiteImage from "@/components/SiteImage";
+import { getSportCoverImage } from "@/data/siteImages";
 import { sports } from "@/data/sports";
 
 export default function SportsPrograms() {
@@ -14,37 +16,55 @@ export default function SportsPrograms() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sports.map((sport) => (
-            <div
-              key={sport.slug}
-              className="group bg-white rounded-2xl overflow-hidden shadow-md card-hover"
-            >
-              <div className={`h-2 bg-gradient-to-r ${sport.color}`} />
-              <div className="p-6">
-                <span className="text-4xl mb-4 block">{sport.emoji}</span>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
-                  <Link href={`/sports/${sport.slug}`}>{sport.name}</Link>
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {sport.description}
-                </p>
-                <div className="mt-4 flex flex-wrap items-center gap-4">
-                  <Link
-                    href={`/sports/${sport.slug}`}
-                    className="text-sm font-semibold text-gray-700 hover:text-emerald-600"
-                  >
-                    Learn more →
-                  </Link>
-                  <Link
-                    href="/#contact"
-                    className="text-sm font-semibold text-emerald-600 hover:text-emerald-700"
-                  >
-                    Enroll Now →
-                  </Link>
+          {sports.map((sport) => {
+            const coverImage = getSportCoverImage(sport.slug);
+
+            return (
+              <div
+                key={sport.slug}
+                className="group bg-white rounded-2xl overflow-hidden shadow-md card-hover"
+              >
+                {coverImage ? (
+                  <div className="relative h-40">
+                    <SiteImage
+                      src={coverImage}
+                      alt={sport.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                ) : (
+                  <div className={`h-2 bg-gradient-to-r ${sport.color}`} />
+                )}
+                <div className="p-6">
+                  {!coverImage && (
+                    <span className="text-4xl mb-4 block">{sport.emoji}</span>
+                  )}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                    <Link href={`/sports/${sport.slug}`}>{sport.name}</Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {sport.description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap items-center gap-4">
+                    <Link
+                      href={`/sports/${sport.slug}`}
+                      className="text-sm font-semibold text-gray-700 hover:text-emerald-600"
+                    >
+                      Learn more →
+                    </Link>
+                    <Link
+                      href="/#contact"
+                      className="text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+                    >
+                      Enroll Now →
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

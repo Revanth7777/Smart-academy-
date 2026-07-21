@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Trophy } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { siteImages } from "@/data/siteImages";
 
 const navLinks = [
   { href: "/#home", label: "Home" },
@@ -20,10 +21,16 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="/#home" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-              <Trophy className="w-5 h-5 text-white" />
-            </div>
+          <a href="/#home" className="flex items-center gap-3 group">
+            {siteImages.logo ? (
+              <img
+                src={siteImages.logo}
+                alt="Smart Games & Academy logo"
+                className="h-10 md:h-12 w-auto max-w-[160px] md:max-w-[200px] object-contain shrink-0"
+              />
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 shrink-0" />
+            )}
             <span className="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">
               Smart Games & Academy
             </span>

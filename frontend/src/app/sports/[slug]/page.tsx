@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SiteImage from "@/components/SiteImage";
+import { getSportCoverImage, siteImages } from "@/data/siteImages";
 import { getAllSportSlugs, getSportBySlug, sports } from "@/data/sports";
 
 type PageProps = {
@@ -31,6 +33,9 @@ export default async function SportPage({ params }: PageProps) {
   if (!sport) notFound();
 
   const related = sports.filter((s) => s.slug !== sport.slug).slice(0, 3);
+  const coverImage = getSportCoverImage(slug);
+  const sportImages =
+    siteImages.sports[slug as keyof typeof siteImages.sports] ?? [];
 
   return (
     <main>
@@ -38,7 +43,17 @@ export default async function SportPage({ params }: PageProps) {
 
       <article className="pt-20">
         <header className={`relative overflow-hidden bg-gradient-to-br ${sport.color}`}>
-          <div className="absolute inset-0 bg-black/25" />
+          {coverImage && (
+            <SiteImage
+              src={coverImage}
+              alt={sport.name}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          )}
+          <div className="absolute inset-0 bg-black/50" />
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-white">
             <Link
               href="/#sports"
@@ -81,6 +96,28 @@ export default async function SportPage({ params }: PageProps) {
               </section>
             ))}
           </div>
+
+          {sportImages.length > 1 && (
+            <div className="mt-12">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">Photos</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {sportImages.slice(1).map((img) => (
+                  <div
+                    key={img.src}
+                    className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100"
+                  >
+                    <SiteImage
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-14 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-500 p-8 text-center text-white">
             <h2 className="text-2xl font-bold mb-2">Ready to start {sport.name}?</h2>

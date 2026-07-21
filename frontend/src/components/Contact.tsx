@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, Send } from "lucide-react";
+import {
+  ACADEMY_PHONE_DISPLAY,
+  academyTelHref,
+  academyWhatsAppHref,
+} from "@/lib/contact";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -16,6 +21,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
       const res = await fetch(`${apiUrl}/api/contact`, {
@@ -23,15 +29,16 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", phone: "", sport: "", message: "" });
-      } else {
+
+      if (!res.ok) {
         setStatus("error");
+        return;
       }
-    } catch {
+
       setStatus("success");
       setForm({ name: "", email: "", phone: "", sport: "", message: "" });
+    } catch {
+      setStatus("error");
     }
   };
 
@@ -56,20 +63,20 @@ export default function Contact() {
               {
                 icon: Phone,
                 label: "Phone",
-                value: "+91 98765 43210",
-                href: "tel:+919876543210",
+                value: ACADEMY_PHONE_DISPLAY,
+                href: academyTelHref,
               },
               {
                 icon: Mail,
                 label: "Email",
-                value: "info@sportsacademy.com",
-                href: "mailto:info@sportsacademy.com",
+                value: "smartgamesacademy2010@gmail.com",
+                href: "mailto:smartgamesacademy2010@gmail.com",
               },
               {
                 icon: MessageCircle,
                 label: "WhatsApp",
-                value: "+91 98765 43210",
-                href: "https://wa.me/919876543210",
+                value: ACADEMY_PHONE_DISPLAY,
+                href: academyWhatsAppHref,
               },
             ].map((item) => (
               <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl bg-gray-50">
