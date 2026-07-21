@@ -1,0 +1,52 @@
+import Link from "next/link";
+import { sports } from "@/data/sports";
+
+export default function SportsPrograms() {
+  return (
+    <section id="sports" className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <span className="text-4xl mb-4 block">🏆</span>
+          <h2 className="section-heading">Our Sports Programs</h2>
+          <p className="section-subheading">
+            World-class training across six disciplines — from ancient martial arts to modern competitive sports.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sports.map((sport) => (
+            <div
+              key={sport.slug}
+              className="group bg-white rounded-2xl overflow-hidden shadow-md card-hover"
+            >
+              <div className={`h-2 bg-gradient-to-r ${sport.color}`} />
+              <div className="p-6">
+                <span className="text-4xl mb-4 block">{sport.emoji}</span>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                  <Link href={`/sports/${sport.slug}`}>{sport.name}</Link>
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {sport.description}
+                </p>
+                <div className="mt-4 flex flex-wrap items-center gap-4">
+                  <Link
+                    href={`/sports/${sport.slug}`}
+                    className="text-sm font-semibold text-gray-700 hover:text-emerald-600"
+                  >
+                    Learn more →
+                  </Link>
+                  <Link
+                    href="/#contact"
+                    className="text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+                  >
+                    Enroll Now →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

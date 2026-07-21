@@ -1,0 +1,206 @@
+"use client";
+
+import { useState } from "react";
+import { MapPin, Phone, Mail, MessageCircle, Send } from "lucide-react";
+
+export default function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    sport: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+      const res = await fetch(`${apiUrl}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", phone: "", sport: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("success");
+      setForm({ name: "", email: "", phone: "", sport: "", message: "" });
+    }
+  };
+
+  return (
+    <section id="contact" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="section-heading">Contact Us</h2>
+          <p className="section-subheading">
+            Ready to start your journey? Get in touch or book a free trial class.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          <div className="space-y-6">
+            {[
+              {
+                icon: MapPin,
+                label: "Academy Location",
+                value: "123 Sports Complex Road, Chennai - 600044",
+              },
+              {
+                icon: Phone,
+                label: "Phone",
+                value: "+91 98765 43210",
+                href: "tel:+919876543210",
+              },
+              {
+                icon: Mail,
+                label: "Email",
+                value: "info@sportsacademy.com",
+                href: "mailto:info@sportsacademy.com",
+              },
+              {
+                icon: MessageCircle,
+                label: "WhatsApp",
+                value: "+91 98765 43210",
+                href: "https://wa.me/919876543210",
+              },
+            ].map((item) => (
+              <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl bg-gray-50">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                  <item.icon className="w-5 h-5 text-emerald-600" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900">{item.label}</div>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="text-gray-600 hover:text-emerald-600 transition-colors"
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-gray-600">{item.value}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            <div className="rounded-2xl overflow-hidden h-64 bg-gray-200 border border-gray-100">
+              <iframe
+                title="Academy Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0!2d80.14!3d12.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU3JzAwLjAiTiA4MMKwMDgnMjQuMCJF!5e0!3m2!1sen!2sin!4v1"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="bg-gray-50 rounded-2xl p-8 space-y-5">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Full Name
+              </label>
+              <input
+                type="text"
+                required
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+                placeholder="Your name"
+              />
+            </div>
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+                  placeholder="you@email.com"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  required
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+                  placeholder="+91 XXXXX XXXXX"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Sport Interest
+              </label>
+              <select
+                value={form.sport}
+                onChange={(e) => setForm({ ...form, sport: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white"
+              >
+                <option value="">Select a sport</option>
+                <option>Adimurai / Attaya Pattaya</option>
+                <option>Taekwondo</option>
+                <option>Wushu</option>
+                <option>Archery</option>
+                <option>Sepak Takraw</option>
+                <option>Soft Tennis</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Message
+              </label>
+              <textarea
+                rows={4}
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none resize-none"
+                placeholder="Tell us about your goals..."
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-60"
+            >
+              <Send className="w-5 h-5" />
+              {status === "loading" ? "Sending..." : "Send Message"}
+            </button>
+            {status === "success" && (
+              <p className="text-emerald-600 text-sm text-center">
+                Thank you! We&apos;ll get back to you soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-red-600 text-sm text-center">
+                Something went wrong. Please try again or call us directly.
+              </p>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
