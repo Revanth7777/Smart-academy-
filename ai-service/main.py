@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 SPORTS = [
-    "Adimurai / Attaya Pattaya",
+    "Atya Patya",
     "Taekwondo",
     "Wushu",
     "Archery",
@@ -26,7 +26,7 @@ SPORTS = [
 ]
 
 SPORT_INFO = {
-    "Adimurai / Attaya Pattaya": "Best for cultural heritage, self-defense, and full-body conditioning.",
+    "Atya Patya": "Best for speed, agility, teamwork, and tactical movement.",
     "Taekwondo": "Ideal for discipline, flexibility, and competitive kicking techniques.",
     "Wushu": "Great for agility, acrobatics, and expressive martial arts forms.",
     "Archery": "Perfect for focus, patience, and precision under pressure.",
@@ -64,12 +64,12 @@ def chat(req: ChatRequest):
             "Welcome to Smart Games & Academy! I can help you choose a sport, "
             "learn about our programs, or answer enrollment questions."
         )
-    elif "taekwondo" in msg or "wushu" in msg or "adimurai" in msg:
+    elif "taekwondo" in msg or "wushu" in msg or "atya patya" in msg or "atyapatya" in msg:
         sport = next((s for s in SPORTS if s.lower().split("/")[0].strip() in msg or s.lower() in msg), None)
         if sport:
             reply = f"{sport}: {SPORT_INFO.get(sport, 'A great program at our academy.')}"
         else:
-            reply = "We offer Taekwondo, Wushu, Adimurai, Archery, Sepak Takraw, and Soft Tennis."
+            reply = "We offer Atya Patya, Taekwondo, Wushu, Archery, Sepak Takraw, and Soft Tennis."
     elif any(word in msg for word in ["register", "join", "enroll", "trial"]):
         reply = (
             "You can register online through our website's Contact section "
@@ -100,7 +100,7 @@ def recommend(req: RecommendRequest):
     recommendations = []
 
     if "discipline" in goal or "self-defense" in goal:
-        recommendations = ["Taekwondo", "Adimurai / Attaya Pattaya", "Wushu"]
+        recommendations = ["Taekwondo", "Atya Patya", "Wushu"]
     elif "focus" in goal or "precision" in goal:
         recommendations = ["Archery", "Wushu"]
     elif "team" in goal or "social" in goal:

@@ -3,10 +3,10 @@ import type { Event, Sport, Testimonial } from "../types";
 export const sports: Sport[] = [
   {
     id: 1,
-    name: "Adimurai / Attaya Pattaya",
+    name: "Atya Patya",
     emoji: "🥋",
-    description: "Ancient Tamil martial art combining strikes, locks, and traditional weaponry.",
-    category: "Martial Arts",
+    description: "Traditional Indian tag sport focused on quick movement, timing, and strategy.",
+    category: "Traditional Sport",
   },
   {
     id: 2,

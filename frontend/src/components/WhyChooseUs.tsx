@@ -41,13 +41,14 @@ export default function WhyChooseUs() {
           </div>
 
           <div className="relative">
-            <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-8 flex flex-col justify-end text-white shadow-2xl">
+            <div className="min-h-[340px] md:min-h-[440px] rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-8 md:p-10 flex flex-col justify-between text-white shadow-2xl">
               <div className="absolute top-8 right-8 w-24 h-24 border-4 border-white/20 rounded-full" />
               <div className="absolute top-16 right-16 w-12 h-12 bg-white/10 rounded-full" />
               <p className="text-6xl font-black opacity-20 absolute top-8 left-8">
                 &ldquo;
               </p>
-              <blockquote className="relative z-10">
+              <div />
+              <blockquote className="relative z-10 max-w-md">
                 <p className="text-xl md:text-2xl font-light leading-relaxed mb-4">
                   Building champions through discipline, dedication, and
                   world-class coaching.

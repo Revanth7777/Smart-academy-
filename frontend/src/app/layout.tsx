@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Smart Games & Academy | Discipline • Dedication • Excellence",
   description:
-    "Smart Games & Academy — premier sports training in Adimurai, Taekwondo, Wushu, Archery, Sepak Takraw, and Soft Tennis with certified coaches.",
+    "Smart Games & Academy — premier sports training in Atya Patya, Taekwondo, Wushu, Archery, Sepak Takraw, and Soft Tennis with certified coaches.",
 };
 
 export default function RootLayout({

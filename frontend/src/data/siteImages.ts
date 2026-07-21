@@ -27,8 +27,8 @@ export const siteImages = {
   },
 
   sports: {
-    adimurai: [] as SiteImage[],
-    // adimurai: [{ src: imagePath("adimurai-cover.jpg"), alt: "Adimurai training" }],
+    "atya-patya": [] as SiteImage[],
+    // "atya-patya": [{ src: imagePath("atya-patya-cover.jpg"), alt: "Atya Patya training" }],
 
     taekwondo: [] as SiteImage[],
     wushu: [] as SiteImage[],

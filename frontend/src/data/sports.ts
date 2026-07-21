@@ -12,36 +12,36 @@ export type Sport = {
 
 export const sports: Sport[] = [
   {
-    slug: "adimurai",
-    name: "Adimurai / Attaya Pattaya",
-    emoji: "🥋",
-    tagline: "The Tamil art of striking — discipline, vital points, and self-defense.",
+    slug: "atya-patya",
+    name: "Atya Patya",
+    emoji: "🏃",
+    tagline: "A traditional chase-and-dodge sport that builds speed, reflexes, and teamwork.",
     description:
-      "Ancient Tamil martial art combining strikes, locks, and traditional weaponry.",
+      "Traditional Indian tag sport focused on quick movement, timing, and strategy.",
     color: "from-orange-500 to-red-600",
-    origin: "Tamil Nadu, India",
+    origin: "Maharashtra, India",
     highlights: [
-      "Empty-hand striking & blocking",
-      "Vital-point awareness (Varma)",
-      "Self-defense & cultural heritage",
-      "Mind–body discipline",
+      "Fast chasing and dodging",
+      "Reflexes and directional control",
+      "Team coordination and game awareness",
+      "Stamina and agility",
     ],
     sections: [
       {
-        heading: "What is Adimurai?",
-        body: "Adimurai is an Indian martial art from southern Tamil Nadu — especially the Kanyakumari and Tirunelveli regions — with roots also noted in parts of southeastern Kerala and northern Sri Lanka. The name comes from Tamil: adi means “to hit or strike,” and murai means “method or procedure.” In simple terms, it is the “method of striking.” Empty-hand foundations are often called Adithada (or Adithadai), while advanced work with vital points is linked to Varma Adi / Varma Kalai.",
+        heading: "What is Atya Patya?",
+        body: "Atya Patya is a traditional Indian team sport played on a marked court with parallel lanes. One team sends chasers to block and tag, while the other team sends runners who dodge and cross lanes to score safely. It is a classic chase-and-escape game that combines speed, timing, and sharp decision-making.",
       },
       {
         heading: "History & cultural roots",
-        body: "Traditionally associated with Siddhar knowledge and practiced as a practical combat science rather than a ritual performance, Adimurai emphasizes punches, kicks, blocks, and solid stances. Historical accounts connect related empty-hand practice with the Chola and Pandya periods. Today it is taught as both self-defense and cultural heritage — building strength, respect, and control of body and mind. Related Tamil fighting traditions are sometimes taught alongside it in modern academies.",
+        body: "Atya Patya is one of India’s long-standing indigenous field games and has been popular in school and community tournaments for decades, especially in western India. It developed as a low-equipment sport that could be played almost anywhere and remains valued for fitness, teamwork, and local sporting culture.",
       },
       {
         heading: "How it is practiced",
-        body: "Training typically covers stances and forms (chuvadus), striking combinations, defense drills, and progressive sparring under a coach. Advanced study may introduce awareness of vital points (varma), which historically linked combat skill with healing knowledge in Siddha traditions. Practice is often outdoors or in open spaces, with a strong focus on discipline and controlled power rather than flashy showmanship.",
+        body: "Training focuses on lane movement, quick starts and stops, safe turning, and tagging technique. Players practice body feints, acceleration bursts, and anticipation drills to outsmart opponents. Coaches also train communication and rotation strategy so teams can defend lanes efficiently and attack at the right moment.",
       },
       {
-        heading: "Why train Adimurai at our academy",
-        body: "Students develop real-world self-defense habits, coordination, and cultural connection to Tamil martial heritage. Whether you know it as Adimurai or under local names used in our programs (including Attaya Pattaya), our coaches guide beginners through safe fundamentals before advancing into more demanding techniques.",
+        heading: "Why train Atya Patya with us",
+        body: "Students build agility, reaction speed, and confidence while learning structured team play. Our program starts with beginner-friendly movement and court awareness, then progresses to advanced chase patterns and match strategy for competitive performance.",
       },
     ],
   },

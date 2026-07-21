@@ -123,6 +123,7 @@ export default function Contact() {
               <input
                 type="text"
                 required
+                suppressHydrationWarning
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
@@ -137,6 +138,7 @@ export default function Contact() {
                 <input
                   type="email"
                   required
+                  suppressHydrationWarning
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
@@ -150,6 +152,7 @@ export default function Contact() {
                 <input
                   type="tel"
                   required
+                  suppressHydrationWarning
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
@@ -162,12 +165,13 @@ export default function Contact() {
                 Sport Interest
               </label>
               <select
+                suppressHydrationWarning
                 value={form.sport}
                 onChange={(e) => setForm({ ...form, sport: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white"
               >
                 <option value="">Select a sport</option>
-                <option>Adimurai / Attaya Pattaya</option>
+                <option>Atya Patya</option>
                 <option>Taekwondo</option>
                 <option>Wushu</option>
                 <option>Archery</option>
@@ -181,6 +185,7 @@ export default function Contact() {
               </label>
               <textarea
                 rows={4}
+                suppressHydrationWarning
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none resize-none"
