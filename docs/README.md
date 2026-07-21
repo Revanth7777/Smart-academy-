@@ -7,7 +7,7 @@ Full-stack sports academy management platform with a public website, REST API, a
 ```
 sports-academy/
 ├── frontend/        React + Next.js (public website)
-├── backend/         Node.js + Express (REST API)
+├── backend/         Node.js + Express + TypeScript (REST API)
 ├── ai-service/      Python FastAPI (AI features)
 ├── database/        (reserved for future DB setup)
 ├── docs/
@@ -39,7 +39,9 @@ npm run dev
 ```bash
 cd backend
 npm install
-npm run dev
+npm run dev      # development (TypeScript with hot reload)
+npm run build    # compile to dist/
+npm start        # run production build
 ```
 
 **AI Service**

@@ -1,26 +1,27 @@
-const express = require("express");
-const { sports, events, testimonials } = require("../data/mockData");
+import { Router, type Request, type Response } from "express";
+import { events, sports, testimonials } from "../data/mockData";
+import type { ContactRequest, RegisterRequest } from "../types";
 
-const router = express.Router();
+const router = Router();
 
-router.get("/health", (_req, res) => {
+router.get("/health", (_req: Request, res: Response) => {
   res.json({ status: "ok", service: "sports-academy-backend" });
 });
 
-router.get("/sports", (_req, res) => {
+router.get("/sports", (_req: Request, res: Response) => {
   res.json({ success: true, data: sports });
 });
 
-router.get("/events", (_req, res) => {
+router.get("/events", (_req: Request, res: Response) => {
   res.json({ success: true, data: events });
 });
 
-router.get("/testimonials", (_req, res) => {
+router.get("/testimonials", (_req: Request, res: Response) => {
   res.json({ success: true, data: testimonials });
 });
 
-router.post("/contact", (req, res) => {
-  const { name, email, phone, sport, message } = req.body;
+router.post("/contact", (req: Request, res: Response) => {
+  const { name, email, phone, sport, message } = req.body as ContactRequest;
 
   if (!name || !email || !phone) {
     return res.status(400).json({
@@ -37,8 +38,8 @@ router.post("/contact", (req, res) => {
   });
 });
 
-router.post("/register", (req, res) => {
-  const { name, email, phone, sport, age, batch } = req.body;
+router.post("/register", (req: Request, res: Response) => {
+  const { name, email, phone, sport, age, batch } = req.body as RegisterRequest;
 
   if (!name || !email || !phone || !sport) {
     return res.status(400).json({
@@ -55,4 +56,4 @@ router.post("/register", (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

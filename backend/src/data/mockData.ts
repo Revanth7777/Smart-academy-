@@ -1,4 +1,6 @@
-const sports = [
+import type { Event, Sport, Testimonial } from "../types";
+
+export const sports: Sport[] = [
   {
     id: 1,
     name: "Adimurai / Attaya Pattaya",
@@ -43,7 +45,7 @@ const sports = [
   },
 ];
 
-const events = [
+export const events: Event[] = [
   {
     id: 1,
     title: "State Championship",
@@ -75,7 +77,7 @@ const events = [
   },
 ];
 
-const testimonials = [
+export const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "Priya Raman",
@@ -98,5 +100,3 @@ const testimonials = [
     rating: 5,
   },
 ];
-
-module.exports = { sports, events, testimonials };
