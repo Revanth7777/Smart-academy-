@@ -27,14 +27,60 @@ export const siteImages = {
   },
 
   sports: {
-    "atya-patya": [] as SiteImage[],
-    // "atya-patya": [{ src: imagePath("atya-patya-cover.jpg"), alt: "Atya Patya training" }],
-
-    taekwondo: [] as SiteImage[],
-    wushu: [] as SiteImage[],
-    archery: [] as SiteImage[],
-    "sepak-takraw": [] as SiteImage[],
-    "soft-tennis": [] as SiteImage[],
+    "atya-patya": [
+      {
+        src: imagePath("atya-patya-cover.jpg"),
+        alt: "Atya Patya player leaping over defenders on a marked court",
+        objectPosition: "55% 40%",
+        // Keep the jump clear of the left-aligned title on detail pages
+        heroObjectPosition: "62% 38%",
+      },
+    ],
+    taekwondo: [
+      {
+        src: imagePath("taekwondo-cover.jpg"),
+        alt: "Taekwondo match — high kick at Olimpiada Nacional",
+        objectPosition: "center 30%",
+        // Push action toward the right so left-aligned title does not cover the kick
+        heroObjectPosition: "68% 28%",
+      },
+    ],
+    wushu: [
+      {
+        src: imagePath("wushu-cover.jpg"),
+        alt: "Wushu sanda fight in a sports arena",
+        objectPosition: "center 45%",
+        // Keep the punch/action clear of the left-aligned title
+        heroObjectPosition: "62% 42%",
+      },
+    ],
+    archery: [
+      {
+        src: imagePath("archery-cover.jpg"),
+        alt: "Archer drawing a recurve bow in competition",
+        objectPosition: "40% 42%",
+        // Face left, bow right — keep the draw clear beside the title
+        heroObjectPosition: "48% 40%",
+      },
+    ],
+    "sepak-takraw": [
+      {
+        src: imagePath("sepak-takraw-cover.jpg"),
+        alt: "Sepak Takraw player performing a high kick at the Asian Games",
+        objectPosition: "center 55%",
+        // Keep the vertical kick clear of the left-aligned title
+        heroObjectPosition: "58% 52%",
+      },
+    ],
+    "soft-tennis": [
+      {
+        src: imagePath("soft-tennis-cover.jpg"),
+        alt: "Soft tennis players competing at the National Games",
+        objectPosition: "42% 58%",
+        // Keep the lunging player clear of the left-aligned title
+        heroObjectPosition: "58% 52%",
+      },
+    ],
   },
 
   events: [] as (SiteImage & { title?: string })[],
@@ -76,9 +122,13 @@ export const galleryCategories: {
   },
 ];
 
-export function getSportCoverImage(slug: string): string | null {
+export function getSportCover(slug: string): SiteImage | null {
   const images = siteImages.sports[slug as keyof typeof siteImages.sports];
-  return images?.[0]?.src ?? null;
+  return images?.[0] ?? null;
+}
+
+export function getSportCoverImage(slug: string): string | null {
+  return getSportCover(slug)?.src ?? null;
 }
 
 export function getGalleryImages(categoryId: GalleryCategoryId): SiteImage[] {

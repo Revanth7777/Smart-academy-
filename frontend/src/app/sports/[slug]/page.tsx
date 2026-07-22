@@ -5,7 +5,7 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SiteImage from "@/components/SiteImage";
-import { getSportCoverImage, siteImages } from "@/data/siteImages";
+import { getSportCover, siteImages } from "@/data/siteImages";
 import { getAllSportSlugs, getSportBySlug, sports } from "@/data/sports";
 
 type PageProps = {
@@ -33,7 +33,7 @@ export default async function SportPage({ params }: PageProps) {
   if (!sport) notFound();
 
   const related = sports.filter((s) => s.slug !== sport.slug).slice(0, 3);
-  const coverImage = getSportCoverImage(slug);
+  const cover = getSportCover(slug);
   const sportImages =
     siteImages.sports[slug as keyof typeof siteImages.sports] ?? [];
 
@@ -42,32 +42,40 @@ export default async function SportPage({ params }: PageProps) {
       <Navbar />
 
       <article className="pt-20">
-        <header className={`relative overflow-hidden bg-gradient-to-br ${sport.color}`}>
-          {coverImage && (
+        <header
+          className={`relative overflow-hidden bg-gradient-to-br ${sport.color} min-h-[300px] md:min-h-[420px]`}
+        >
+          {cover && (
             <SiteImage
-              src={coverImage}
-              alt={sport.name}
+              src={cover.src}
+              alt={cover.alt}
               fill
               priority
               className="object-cover"
+              objectPosition={
+                cover.heroObjectPosition ?? cover.objectPosition ?? "center"
+              }
               sizes="100vw"
             />
           )}
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-white">
-            <Link
-              href="/#sports"
-              className="inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white mb-8"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Sports
-            </Link>
-            <span className="text-5xl mb-4 block">{sport.emoji}</span>
-            <p className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-2">
-              {sport.origin}
-            </p>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">{sport.name}</h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl">{sport.tagline}</p>
+          {/* Darker on the left for text; clearer on the right so the photo reads */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-white">
+            <div className="max-w-xl">
+              <Link
+                href="/#sports"
+                className="inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white mb-8"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Sports
+              </Link>
+              <span className="text-5xl mb-4 block">{sport.emoji}</span>
+              <p className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-2">
+                {sport.origin}
+              </p>
+              <h1 className="text-3xl md:text-5xl font-bold mb-4">{sport.name}</h1>
+              <p className="text-lg md:text-xl text-white/90">{sport.tagline}</p>
+            </div>
           </div>
         </header>
 

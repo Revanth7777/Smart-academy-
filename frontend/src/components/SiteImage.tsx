@@ -9,6 +9,7 @@ type SiteImageProps = {
   height?: number;
   priority?: boolean;
   sizes?: string;
+  objectPosition?: string;
 };
 
 export default function SiteImage({
@@ -20,7 +21,10 @@ export default function SiteImage({
   height = 600,
   priority,
   sizes,
+  objectPosition,
 }: SiteImageProps) {
+  const style = objectPosition ? { objectPosition } : undefined;
+
   if (fill) {
     return (
       <Image
@@ -28,6 +32,7 @@ export default function SiteImage({
         alt={alt}
         fill
         className={className}
+        style={style}
         sizes={sizes ?? "(max-width: 768px) 100vw, 50vw"}
         priority={priority}
       />
@@ -41,6 +46,7 @@ export default function SiteImage({
       width={width}
       height={height}
       className={className}
+      style={style}
       priority={priority}
     />
   );

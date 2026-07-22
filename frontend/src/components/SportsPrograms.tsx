@@ -1,6 +1,6 @@
 import Link from "next/link";
 import SiteImage from "@/components/SiteImage";
-import { getSportCoverImage } from "@/data/siteImages";
+import { getSportCover } from "@/data/siteImages";
 import { sports } from "@/data/sports";
 
 export default function SportsPrograms() {
@@ -17,20 +17,21 @@ export default function SportsPrograms() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sports.map((sport) => {
-            const coverImage = getSportCoverImage(sport.slug);
+            const cover = getSportCover(sport.slug);
 
             return (
               <div
                 key={sport.slug}
                 className="group bg-white rounded-2xl overflow-hidden shadow-md card-hover"
               >
-                {coverImage ? (
-                  <div className="relative h-40">
+                {cover ? (
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                     <SiteImage
-                      src={coverImage}
-                      alt={sport.name}
+                      src={cover.src}
+                      alt={cover.alt}
                       fill
                       className="object-cover"
+                      objectPosition={cover.objectPosition ?? "center"}
                       sizes="(max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
@@ -38,7 +39,7 @@ export default function SportsPrograms() {
                   <div className={`h-2 bg-gradient-to-r ${sport.color}`} />
                 )}
                 <div className="p-6">
-                  {!coverImage && (
+                  {!cover && (
                     <span className="text-4xl mb-4 block">{sport.emoji}</span>
                   )}
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
