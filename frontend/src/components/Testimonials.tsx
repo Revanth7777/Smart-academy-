@@ -1,3 +1,5 @@
+import { brand } from "@/data/theme";
+
 const testimonials = [
   {
     name: "Priya Raman",
@@ -21,12 +23,12 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className={`py-24 ${brand.surface.section}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="flex justify-center gap-1 mb-4">
             {[...Array(5)].map((_, i) => (
-              <span key={i} className="text-2xl text-amber-400">
+              <span key={i} className="text-2xl text-emerald-500">
                 ★
               </span>
             ))}
@@ -39,11 +41,11 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-white rounded-2xl p-8 shadow-md card-hover border border-gray-100"
+              className="surface-card p-8 card-hover"
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(t.rating)].map((_, i) => (
-                  <span key={i} className="text-amber-400">
+                  <span key={i} className="text-emerald-500">
                     ★
                   </span>
                 ))}

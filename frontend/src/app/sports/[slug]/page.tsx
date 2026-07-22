@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import SiteImage from "@/components/SiteImage";
 import { getSportCover, siteImages } from "@/data/siteImages";
 import { getAllSportSlugs, getSportBySlug, sports } from "@/data/sports";
+import { brand } from "@/data/theme";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -59,7 +60,7 @@ export default async function SportPage({ params }: PageProps) {
             />
           )}
           {/* Darker on the left for text; clearer on the right so the photo reads */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/85 via-emerald-950/55 to-emerald-950/20" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-white">
             <div className="max-w-xl">
               <Link
@@ -84,7 +85,7 @@ export default async function SportPage({ params }: PageProps) {
             {sport.highlights.map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-3 rounded-xl bg-gray-50 px-4 py-3"
+                className="flex items-start gap-3 rounded-xl bg-emerald-100/40 px-4 py-3"
               >
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                 <span className="text-sm font-medium text-gray-800">{item}</span>
@@ -112,7 +113,7 @@ export default async function SportPage({ params }: PageProps) {
                 {sportImages.slice(1).map((img) => (
                   <div
                     key={img.src}
-                    className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100"
+                    className="relative aspect-[4/3] rounded-xl overflow-hidden bg-emerald-100/50"
                   >
                     <SiteImage
                       src={img.src}
@@ -127,7 +128,7 @@ export default async function SportPage({ params }: PageProps) {
             </div>
           )}
 
-          <div className="mt-14 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-500 p-8 text-center text-white">
+          <div className={`mt-14 rounded-2xl bg-gradient-to-r ${brand.gradient} p-8 text-center text-white`}>
             <h2 className="text-2xl font-bold mb-2">Ready to start {sport.name}?</h2>
             <p className="text-white/90 mb-6 max-w-lg mx-auto">
               Book a trial session or enroll with our coaches and begin your journey.
@@ -147,7 +148,7 @@ export default async function SportPage({ params }: PageProps) {
                 <Link
                   key={item.slug}
                   href={`/sports/${item.slug}`}
-                  className="group rounded-xl border border-gray-100 bg-white p-5 shadow-sm card-hover"
+                  className="group surface-card p-5 card-hover"
                 >
                   <span className="text-2xl block mb-2">{item.emoji}</span>
                   <h3 className="font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors">

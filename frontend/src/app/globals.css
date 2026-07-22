@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  @apply bg-white text-gray-900 antialiased;
+  @apply bg-emerald-50 text-gray-900 antialiased;
 }
 
 .section-heading {
@@ -19,9 +19,22 @@ body {
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-emerald-600 to-emerald-700 bg-clip-text text-transparent;
 }
 
 .card-hover {
   @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+}
+
+.surface-card {
+  @apply bg-white/75 backdrop-blur-sm rounded-2xl shadow-md border border-emerald-200/60;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

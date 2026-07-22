@@ -4,6 +4,7 @@ import {
   getGalleryImages,
   siteImages,
 } from "@/data/siteImages";
+import { brand } from "@/data/theme";
 
 export default function Gallery() {
   const allImages = galleryCategories.flatMap((cat) =>
@@ -17,7 +18,7 @@ export default function Gallery() {
     siteImages.gallery.certificates.length > 0;
 
   return (
-    <section id="gallery" className="py-24 bg-white">
+    <section id="gallery" className={`py-24 ${brand.surface.section}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="section-heading">Gallery</h2>
@@ -83,7 +84,7 @@ export default function Gallery() {
               {allImages.map((img) => (
                 <div
                   key={img.src}
-                  className="relative aspect-square rounded-xl overflow-hidden bg-gray-100"
+                  className="relative aspect-square rounded-xl overflow-hidden bg-emerald-100/50"
                 >
                   <SiteImage
                     src={img.src}

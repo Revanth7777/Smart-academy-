@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { siteImages } from "@/data/siteImages";
+import { brand } from "@/data/theme";
 
 const navLinks = [
   { href: "/#home", label: "Home" },
@@ -18,7 +19,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+    <header className={`fixed top-0 left-0 right-0 z-50 ${brand.surface.nav} backdrop-blur-md shadow-sm border-b border-emerald-200/50`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a href="/#home" className="flex items-center gap-3 group">
@@ -29,7 +30,7 @@ export default function Navbar() {
                 className="h-10 md:h-12 w-auto max-w-[160px] md:max-w-[200px] object-contain shrink-0"
               />
             ) : (
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 shrink-0" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 shrink-0" />
             )}
             <span className="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">
               Smart Games & Academy
@@ -57,7 +58,7 @@ export default function Navbar() {
             </a>
             <a
               href="/#contact"
-              className="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-teal-500 rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-emerald-500/25"
+              className="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-emerald-500/25"
             >
               Book Trial
             </a>
@@ -73,7 +74,7 @@ export default function Navbar() {
         </div>
 
         {open && (
-          <div className="lg:hidden pb-4 border-t border-gray-100">
+          <div className="lg:hidden pb-4 border-t border-emerald-200/60">
             <div className="flex flex-col gap-2 pt-4">
               {navLinks.map((link) => (
                 <a
@@ -96,7 +97,7 @@ export default function Navbar() {
                 <a
                   href="/#contact"
                   onClick={() => setOpen(false)}
-                  className="text-center py-2.5 font-semibold text-white bg-gradient-to-r from-emerald-600 to-teal-500 rounded-full"
+                  className="text-center py-2.5 font-semibold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full"
                 >
                   Book Trial
                 </a>

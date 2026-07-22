@@ -1,3 +1,5 @@
+import { brand } from "@/data/theme";
+
 export type Sport = {
   slug: string;
   name: string;
@@ -18,7 +20,7 @@ export const sports: Sport[] = [
     tagline: "A traditional chase-and-dodge sport that builds speed, reflexes, and teamwork.",
     description:
       "Traditional Indian tag sport focused on quick movement, timing, and strategy.",
-    color: "from-orange-500 to-red-600",
+    color: brand.gradient,
     origin: "Maharashtra, India",
     highlights: [
       "Fast chasing and dodging",
@@ -52,7 +54,7 @@ export const sports: Sport[] = [
     tagline: "Korean martial art of powerful kicks, focus, and Olympic competition.",
     description:
       "Korean martial art focused on powerful kicks, discipline, and self-defense.",
-    color: "from-blue-500 to-indigo-600",
+    color: brand.gradient,
     origin: "Korea",
     highlights: [
       "Dynamic kicking techniques",
@@ -86,7 +88,7 @@ export const sports: Sport[] = [
     tagline: "Chinese martial arts sport — flowing forms, weapons, and sanda combat.",
     description:
       "Chinese martial art blending fluid movements, acrobatics, and combat forms.",
-    color: "from-red-500 to-rose-600",
+    color: brand.gradient,
     origin: "China",
     highlights: [
       "Taolu (forms & routines)",
@@ -120,7 +122,7 @@ export const sports: Sport[] = [
     tagline: "Precision under pressure — focus, form, and the pursuit of the gold.",
     description:
       "Precision sport developing focus, patience, and hand-eye coordination.",
-    color: "from-amber-500 to-yellow-600",
+    color: brand.gradient,
     origin: "Global / Olympic sport",
     highlights: [
       "Target precision & scoring",
@@ -154,7 +156,7 @@ export const sports: Sport[] = [
     tagline: "Kick volleyball — acrobatic rallies with feet, knees, chest, and head.",
     description:
       "Dynamic Southeast Asian sport using feet, knees, and head to play volleyball.",
-    color: "from-green-500 to-emerald-600",
+    color: brand.gradient,
     origin: "Southeast Asia",
     highlights: [
       "No hands — feet & head only",
@@ -188,7 +190,7 @@ export const sports: Sport[] = [
     tagline: "Japan’s soft-ball racket sport — fast rallies for every age and level.",
     description:
       "Fast-paced racket sport perfect for agility, reflexes, and team play.",
-    color: "from-cyan-500 to-teal-600",
+    color: brand.gradient,
     origin: "Japan",
     highlights: [
       "Soft rubber ball & light racket",

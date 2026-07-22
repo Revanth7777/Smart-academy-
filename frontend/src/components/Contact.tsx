@@ -7,6 +7,7 @@ import {
   academyTelHref,
   academyWhatsAppHref,
 } from "@/lib/contact";
+import { brand } from "@/data/theme";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -43,7 +44,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className={`py-24 ${brand.surface.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="section-heading">Contact Us</h2>
@@ -79,7 +80,7 @@ export default function Contact() {
                 href: academyWhatsAppHref,
               },
             ].map((item) => (
-              <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl bg-gray-50">
+              <div key={item.label} className={`flex items-start gap-4 p-4 rounded-xl ${brand.surface.muted}`}>
                 <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
                   <item.icon className="w-5 h-5 text-emerald-600" />
                 </div>
@@ -101,7 +102,7 @@ export default function Contact() {
               </div>
             ))}
 
-            <div className="rounded-2xl overflow-hidden h-64 bg-gray-200 border border-gray-100">
+            <div className={`rounded-2xl overflow-hidden h-64 bg-emerald-100/60 border ${brand.surface.cardBorder}`}>
               <iframe
                 title="Academy Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0!2d80.14!3d12.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU3JzAwLjAiTiA4MMKwMDgnMjQuMCJF!5e0!3m2!1sen!2sin!4v1"
@@ -115,7 +116,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-gray-50 rounded-2xl p-8 space-y-5">
+          <form onSubmit={handleSubmit} className={`surface-card p-8 space-y-5`}>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Full Name
@@ -126,7 +127,7 @@ export default function Contact() {
                 suppressHydrationWarning
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-emerald-200/70 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white/80"
                 placeholder="Your name"
               />
             </div>
@@ -141,7 +142,7 @@ export default function Contact() {
                   suppressHydrationWarning
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-emerald-200/70 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white/80"
                   placeholder="you@email.com"
                 />
               </div>
@@ -155,7 +156,7 @@ export default function Contact() {
                   suppressHydrationWarning
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-emerald-200/70 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white/80"
                   placeholder="+91 XXXXX XXXXX"
                 />
               </div>
@@ -168,7 +169,7 @@ export default function Contact() {
                 suppressHydrationWarning
                 value={form.sport}
                 onChange={(e) => setForm({ ...form, sport: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white"
+                className="w-full px-4 py-3 rounded-xl border border-emerald-200/70 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white/80"
               >
                 <option value="">Select a sport</option>
                 <option>Atya Patya</option>
@@ -188,14 +189,14 @@ export default function Contact() {
                 suppressHydrationWarning
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-emerald-200/70 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white/80 resize-none"
                 placeholder="Tell us about your goals..."
               />
             </div>
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-60"
+              className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-60"
             >
               <Send className="w-5 h-5" />
               {status === "loading" ? "Sending..." : "Send Message"}

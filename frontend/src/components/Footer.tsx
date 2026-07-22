@@ -25,7 +25,7 @@ export default function Footer() {
                   className="h-10 w-auto max-w-[160px] object-contain shrink-0"
                 />
               ) : (
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 shrink-0" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 shrink-0" />
               )}
               <span className="font-bold text-white text-lg">Smart Games & Academy</span>
             </div>

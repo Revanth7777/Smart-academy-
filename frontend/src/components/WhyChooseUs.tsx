@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import { brand } from "@/data/theme";
 
 const features = [
   "Certified Coaches",
@@ -14,7 +15,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className={`py-24 ${brand.surface.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -41,7 +42,7 @@ export default function WhyChooseUs() {
           </div>
 
           <div className="relative">
-            <div className="min-h-[340px] md:min-h-[440px] rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-8 md:p-10 flex flex-col justify-between text-white shadow-2xl">
+            <div className={`min-h-[340px] md:min-h-[440px] rounded-2xl bg-gradient-to-br ${brand.gradientHero} p-8 md:p-10 flex flex-col justify-between text-white shadow-2xl`}>
               <div className="absolute top-8 right-8 w-24 h-24 border-4 border-white/20 rounded-full" />
               <div className="absolute top-16 right-16 w-12 h-12 bg-white/10 rounded-full" />
               <p className="text-6xl font-black opacity-20 absolute top-8 left-8">
@@ -58,7 +59,7 @@ export default function WhyChooseUs() {
                 </footer>
               </blockquote>
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 border border-gray-100">
+            <div className={`absolute -bottom-6 -left-6 ${brand.surface.cardSolid} rounded-xl shadow-xl p-4 ${brand.surface.cardBorder} border`}>
               <div className="text-2xl font-bold text-emerald-600">10+</div>
               <div className="text-sm text-gray-600">Years of Excellence</div>
             </div>

@@ -1,4 +1,5 @@
 import { Calendar, MapPin } from "lucide-react";
+import { brand, eventBadgeStyles } from "@/data/theme";
 
 const events = [
   {
@@ -27,16 +28,11 @@ const events = [
   },
 ];
 
-const typeColors: Record<string, string> = {
-  Competition: "bg-amber-100 text-amber-800",
-  Assessment: "bg-blue-100 text-blue-800",
-  Camp: "bg-emerald-100 text-emerald-800",
-  Tournament: "bg-purple-100 text-purple-800",
-};
+const typeColors = eventBadgeStyles;
 
 export default function Events() {
   return (
-    <section id="events" className="py-24 bg-gray-50">
+    <section id="events" className={`py-24 ${brand.surface.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-4xl mb-4 block">🥇</span>
@@ -50,7 +46,7 @@ export default function Events() {
           {events.map((event) => (
             <div
               key={event.title}
-              className="bg-white rounded-2xl p-6 shadow-md card-hover border border-gray-100"
+              className="surface-card p-6 card-hover"
             >
               <div className="flex items-start justify-between mb-4">
                 <span className="text-3xl">🥇</span>

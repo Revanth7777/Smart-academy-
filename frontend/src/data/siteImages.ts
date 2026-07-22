@@ -1,4 +1,5 @@
 import { imagePath, type SiteImage } from "@/lib/images";
+import { brand } from "@/data/theme";
 
 /**
  * Put all image files in: frontend/public/images/
@@ -100,25 +101,25 @@ export const galleryCategories: {
     id: "training",
     title: "Training Sessions",
     emoji: "🏋️",
-    gradient: "from-emerald-600 to-teal-600",
+    gradient: brand.galleryShades[0],
   },
   {
     id: "competitions",
     title: "Competitions",
     emoji: "🏆",
-    gradient: "from-amber-500 to-orange-600",
+    gradient: brand.galleryShades[1],
   },
   {
     id: "medals",
     title: "Medal Winners",
     emoji: "🥇",
-    gradient: "from-yellow-400 to-amber-500",
+    gradient: brand.galleryShades[2],
   },
   {
     id: "certificates",
     title: "Certificates",
     emoji: "📜",
-    gradient: "from-blue-500 to-indigo-600",
+    gradient: brand.galleryShades[3],
   },
 ];
 

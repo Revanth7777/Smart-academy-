@@ -2,11 +2,11 @@ import Link from "next/link";
 import SiteImage from "@/components/SiteImage";
 import { getSportCover } from "@/data/siteImages";
 import { sports } from "@/data/sports";
+import { brand } from "@/data/theme";
 
 export default function SportsPrograms() {
   return (
-    <section id="sports" className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="sports" className={`py-24 ${brand.surface.section}`}>      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-4xl mb-4 block">🏆</span>
           <h2 className="section-heading">Our Sports Programs</h2>
@@ -22,10 +22,10 @@ export default function SportsPrograms() {
             return (
               <div
                 key={sport.slug}
-                className="group bg-white rounded-2xl overflow-hidden shadow-md card-hover"
+                className="group surface-card overflow-hidden card-hover"
               >
                 {cover ? (
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-emerald-100/50">
                     <SiteImage
                       src={cover.src}
                       alt={cover.alt}
