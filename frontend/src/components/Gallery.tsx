@@ -2,7 +2,6 @@ import SiteImage from "@/components/SiteImage";
 import {
   galleryCategories,
   getGalleryImages,
-  siteImages,
 } from "@/data/siteImages";
 import { brand } from "@/data/theme";
 
@@ -10,12 +9,6 @@ export default function Gallery() {
   const allImages = galleryCategories.flatMap((cat) =>
     getGalleryImages(cat.id).map((img) => ({ ...img, category: cat.title }))
   );
-
-  const hasGalleryImages =
-    siteImages.gallery.training.length > 0 ||
-    siteImages.gallery.competitions.length > 0 ||
-    siteImages.gallery.medals.length > 0 ||
-    siteImages.gallery.certificates.length > 0;
 
   return (
     <section id="gallery" className={`py-16 sm:py-20 ${brand.surface.section}`}>
@@ -99,18 +92,6 @@ export default function Gallery() {
           </div>
         )}
 
-        {!hasGalleryImages && (
-          <p className="text-center text-sm text-gray-500">
-            Drop image files into{" "}
-            <code className="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
-              frontend/public/images/
-            </code>{" "}
-            and list them in{" "}
-            <code className="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
-              src/data/siteImages.ts
-            </code>
-          </p>
-        )}
       </div>
     </section>
   );

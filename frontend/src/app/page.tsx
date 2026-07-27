@@ -5,7 +5,6 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Events from "@/components/Events";
 import Gallery from "@/components/Gallery";
 import Achievements from "@/components/Achievements";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -19,7 +18,6 @@ export default function Home() {
       <Events />
       <Gallery />
       <Achievements />
-      <Testimonials />
       <Contact />
       <Footer />
     </main>
