@@ -18,16 +18,16 @@ export default function Gallery() {
     siteImages.gallery.certificates.length > 0;
 
   return (
-    <section id="gallery" className={`py-24 ${brand.surface.section}`}>
+    <section id="gallery" className={`py-16 sm:py-20 ${brand.surface.section}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="section-heading">Gallery</h2>
           <p className="section-subheading">
             Moments of triumph, dedication, and growth at our academy.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
           {galleryCategories.map((cat) => {
             const images = getGalleryImages(cat.id);
             const cover = images[0];
@@ -58,7 +58,7 @@ export default function Gallery() {
                   </div>
                 )}
 
-                <div className="absolute inset-0 flex flex-col items-center justify-end p-6 text-white">
+                <div className="absolute inset-0 flex flex-col items-center justify-end p-4 sm:p-6 text-white">
                   <h3 className="text-lg font-bold text-center">{cat.title}</h3>
                   <p className="text-sm text-white/80 mt-1">
                     {images.length > 0
@@ -80,7 +80,7 @@ export default function Gallery() {
         {allImages.length > 0 && (
           <div>
             <h3 className="text-xl font-bold text-gray-900 mb-6">Recent photos</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {allImages.map((img) => (
                 <div
                   key={img.src}

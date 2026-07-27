@@ -44,16 +44,16 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className={`py-24 ${brand.surface.sectionAlt}`}>
+    <section id="contact" className={`py-16 sm:py-20 ${brand.surface.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="section-heading">Contact Us</h2>
           <p className="section-subheading">
             Ready to start your journey? Get in touch or book a free trial class.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           <div className="space-y-6">
             {[
               {
@@ -80,8 +80,8 @@ export default function Contact() {
                 href: academyWhatsAppHref,
               },
             ].map((item) => (
-              <div key={item.label} className={`flex items-start gap-4 p-4 rounded-xl ${brand.surface.muted}`}>
-                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+              <div key={item.label} className={`flex items-start gap-3 sm:gap-4 p-4 rounded-xl ${brand.surface.muted}`}>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
                   <item.icon className="w-5 h-5 text-emerald-600" />
                 </div>
                 <div>
@@ -102,7 +102,7 @@ export default function Contact() {
               </div>
             ))}
 
-            <div className={`rounded-2xl overflow-hidden h-64 bg-emerald-100/60 border ${brand.surface.cardBorder}`}>
+            <div className={`rounded-2xl overflow-hidden h-56 sm:h-64 bg-emerald-100/60 border ${brand.surface.cardBorder}`}>
               <iframe
                 title="Academy Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0!2d80.14!3d12.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU3JzAwLjAiTiA4MMKwMDgnMjQuMCJF!5e0!3m2!1sen!2sin!4v1"
@@ -116,7 +116,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className={`surface-card p-8 space-y-5`}>
+          <form onSubmit={handleSubmit} className={`surface-card p-5 sm:p-8 space-y-5`}>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Full Name

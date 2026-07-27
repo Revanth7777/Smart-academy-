@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
-const basePath = '/Smart-academy-';
+// GitHub Pages project URL needs /Smart-academy-; local `next dev` stays at /
+const basePath = process.env.NODE_ENV === 'production' ? '/Smart-academy-' : '';
 
 const nextConfig = {
   output: 'export',
   basePath,
-  assetPrefix: basePath,
+  assetPrefix: basePath || undefined,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },

@@ -32,9 +32,9 @@ const typeColors = eventBadgeStyles;
 
 export default function Events() {
   return (
-    <section id="events" className={`py-24 ${brand.surface.sectionAlt}`}>
+    <section id="events" className={`py-16 sm:py-20 ${brand.surface.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <span className="text-4xl mb-4 block">🥇</span>
           <h2 className="section-heading">Upcoming Events</h2>
           <p className="section-subheading">
@@ -42,11 +42,11 @@ export default function Events() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
           {events.map((event) => (
             <div
               key={event.title}
-              className="surface-card p-6 card-hover"
+              className="surface-card p-5 sm:p-6 card-hover"
             >
               <div className="flex items-start justify-between mb-4">
                 <span className="text-3xl">🥇</span>
@@ -56,7 +56,7 @@ export default function Events() {
                   {event.type}
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
                 {event.title}
               </h3>
               <div className="space-y-2 text-sm text-gray-600">

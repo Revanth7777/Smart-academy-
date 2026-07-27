@@ -23,9 +23,9 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className={`py-24 ${brand.surface.section}`}>
+    <section className={`py-16 sm:py-20 ${brand.surface.section}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <div className="flex justify-center gap-1 mb-4">
             {[...Array(5)].map((_, i) => (
               <span key={i} className="text-2xl text-emerald-500">
@@ -37,11 +37,11 @@ export default function Testimonials() {
           <p className="section-subheading">Parents & Students Reviews</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="surface-card p-8 card-hover"
+              className="surface-card p-5 sm:p-8 card-hover"
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(t.rating)].map((_, i) => (

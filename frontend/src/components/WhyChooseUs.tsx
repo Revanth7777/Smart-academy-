@@ -15,15 +15,15 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className={`py-24 ${brand.surface.sectionAlt}`}>
+    <section id="about" className={`py-16 sm:py-20 ${brand.surface.sectionAlt}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-5 sm:mb-6">
               Why Choose{" "}
               <span className="gradient-text">Our Academy?</span>
             </h2>
-            <p className="text-gray-600 mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 mb-7 sm:mb-8 leading-relaxed">
               We are committed to nurturing champions through structured training,
               expert coaching, and a supportive environment. Our academy provides
               everything you need to excel — from beginner fundamentals to
@@ -42,15 +42,15 @@ export default function WhyChooseUs() {
           </div>
 
           <div className="relative">
-            <div className={`min-h-[340px] md:min-h-[440px] rounded-2xl bg-gradient-to-br ${brand.gradientHero} p-8 md:p-10 flex flex-col justify-between text-white shadow-2xl`}>
+            <div className={`min-h-[320px] md:min-h-[440px] rounded-2xl bg-gradient-to-br ${brand.gradientHero} p-6 sm:p-8 md:p-10 flex flex-col justify-between text-white shadow-2xl`}>
               <div className="absolute top-8 right-8 w-24 h-24 border-4 border-white/20 rounded-full" />
               <div className="absolute top-16 right-16 w-12 h-12 bg-white/10 rounded-full" />
-              <p className="text-6xl font-black opacity-20 absolute top-8 left-8">
+              <p className="text-5xl sm:text-6xl font-black opacity-20 absolute top-8 left-8">
                 &ldquo;
               </p>
               <div />
               <blockquote className="relative z-10 max-w-md">
-                <p className="text-xl md:text-2xl font-light leading-relaxed mb-4">
+                <p className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed mb-4">
                   Building champions through discipline, dedication, and
                   world-class coaching.
                 </p>
@@ -59,7 +59,7 @@ export default function WhyChooseUs() {
                 </footer>
               </blockquote>
             </div>
-            <div className={`absolute -bottom-6 -left-6 ${brand.surface.cardSolid} rounded-xl shadow-xl p-4 ${brand.surface.cardBorder} border`}>
+            <div className={`absolute -bottom-4 sm:-bottom-6 -left-2 sm:-left-6 ${brand.surface.cardSolid} rounded-xl shadow-xl p-3 sm:p-4 ${brand.surface.cardBorder} border`}>
               <div className="text-2xl font-bold text-emerald-600">10+</div>
               <div className="text-sm text-gray-600">Years of Excellence</div>
             </div>

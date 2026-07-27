@@ -58,7 +58,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-16 sm:pt-20 pb-16 sm:pb-20 lg:min-h-screen lg:flex lg:items-center"
+      className="relative overflow-hidden pt-16 sm:pt-20 pb-14 sm:pb-20 lg:min-h-screen lg:flex lg:items-center"
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${brand.gradientDark}`} />
 
@@ -129,7 +129,7 @@ export default function Hero() {
                 <Link
                   key={sport.slug}
                   href={`/sports/${sport.slug}`}
-                  className="px-2.5 sm:px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/35 text-emerald-50 text-xs sm:text-sm font-medium hover:bg-emerald-500/30 hover:border-emerald-400/50 transition-colors text-center truncate"
+                  className="px-2.5 sm:px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/35 text-emerald-50 text-xs sm:text-sm font-medium hover:bg-emerald-500/30 hover:border-emerald-400/50 transition-colors text-center whitespace-nowrap"
                 >
                   {sport.emoji} {sport.name}
                 </Link>
@@ -156,7 +156,7 @@ export default function Hero() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 px-2 sm:px-3 py-3 sm:py-4 backdrop-blur-sm"
+                  className="rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 px-2 sm:px-3 py-2.5 sm:py-4 backdrop-blur-sm"
                 >
                   <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
                     {stat.value}

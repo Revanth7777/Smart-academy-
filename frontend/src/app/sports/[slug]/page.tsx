@@ -42,9 +42,9 @@ export default async function SportPage({ params }: PageProps) {
     <main>
       <Navbar />
 
-      <article className="pt-20">
+      <article className="pt-16 sm:pt-20">
         <header
-          className={`relative overflow-hidden bg-gradient-to-br ${sport.color} min-h-[300px] md:min-h-[420px]`}
+          className={`relative overflow-hidden bg-gradient-to-br ${sport.color} min-h-[280px] sm:min-h-[320px] md:min-h-[420px]`}
         >
           {cover && (
             <SiteImage
@@ -61,7 +61,7 @@ export default async function SportPage({ params }: PageProps) {
           )}
           {/* Darker on the left for text; clearer on the right so the photo reads */}
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/85 via-emerald-950/55 to-emerald-950/20" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-white">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-20 text-white">
             <div className="max-w-xl">
               <Link
                 href="/#sports"
@@ -70,18 +70,18 @@ export default async function SportPage({ params }: PageProps) {
                 <ArrowLeft className="w-4 h-4" />
                 Back to Sports
               </Link>
-              <span className="text-5xl mb-4 block">{sport.emoji}</span>
+              <span className="text-4xl sm:text-5xl mb-3 sm:mb-4 block">{sport.emoji}</span>
               <p className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-2">
                 {sport.origin}
               </p>
-              <h1 className="text-3xl md:text-5xl font-bold mb-4">{sport.name}</h1>
-              <p className="text-lg md:text-xl text-white/90">{sport.tagline}</p>
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4">{sport.name}</h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/90">{sport.tagline}</p>
             </div>
           </div>
         </header>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <div className="grid sm:grid-cols-2 gap-3 mb-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
+          <div className="grid sm:grid-cols-2 gap-3 mb-10 sm:mb-12">
             {sport.highlights.map((item) => (
               <div
                 key={item}
@@ -96,7 +96,7 @@ export default async function SportPage({ params }: PageProps) {
           <div className="space-y-10">
             {sport.sections.map((section) => (
               <section key={section.heading}>
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
                   {section.heading}
                 </h2>
                 <p className="text-gray-600 leading-relaxed text-base md:text-[1.05rem]">
@@ -128,8 +128,8 @@ export default async function SportPage({ params }: PageProps) {
             </div>
           )}
 
-          <div className={`mt-14 rounded-2xl bg-gradient-to-r ${brand.gradient} p-8 text-center text-white`}>
-            <h2 className="text-2xl font-bold mb-2">Ready to start {sport.name}?</h2>
+          <div className={`mt-12 sm:mt-14 rounded-2xl bg-gradient-to-r ${brand.gradient} p-5 sm:p-8 text-center text-white`}>
+            <h2 className="text-xl sm:text-2xl font-bold mb-2">Ready to start {sport.name}?</h2>
             <p className="text-white/90 mb-6 max-w-lg mx-auto">
               Book a trial session or enroll with our coaches and begin your journey.
             </p>
@@ -141,7 +141,7 @@ export default async function SportPage({ params }: PageProps) {
             </Link>
           </div>
 
-          <div className="mt-16">
+          <div className="mt-12 sm:mt-16">
             <h2 className="text-xl font-bold text-gray-900 mb-6">Explore more sports</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               {related.map((item) => (

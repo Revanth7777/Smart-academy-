@@ -20,19 +20,19 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 ${brand.surface.nav} backdrop-blur-md shadow-sm border-b border-emerald-200/50`}>
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="/#home" className="flex items-center gap-3 group">
+      <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20 gap-3">
+          <a href="/#home" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
             {siteImages.logo ? (
               <img
                 src={siteImages.logo}
                 alt="Smart Games & Academy logo"
-                className="h-10 md:h-12 w-auto max-w-[160px] md:max-w-[200px] object-contain shrink-0"
+                className="h-9 sm:h-10 md:h-12 w-auto max-w-[140px] sm:max-w-[160px] md:max-w-[200px] object-contain shrink-0"
               />
             ) : (
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 shrink-0" />
             )}
-            <span className="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">
+            <span className="hidden sm:block font-bold text-base md:text-lg text-gray-900 group-hover:text-emerald-600 transition-colors truncate">
               Smart Games & Academy
             </span>
           </a>
@@ -66,7 +66,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-2 text-gray-600"
+            className="lg:hidden p-2.5 text-gray-600 rounded-lg hover:bg-emerald-50 transition-colors"
             aria-label="Toggle menu"
           >
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -74,7 +74,7 @@ export default function Navbar() {
         </div>
 
         {open && (
-          <div className="lg:hidden pb-4 border-t border-emerald-200/60">
+          <div className="lg:hidden pb-4 border-t border-emerald-200/60 max-h-[calc(100vh-5rem)] overflow-y-auto">
             <div className="flex flex-col gap-2 pt-4">
               {navLinks.map((link) => (
                 <a

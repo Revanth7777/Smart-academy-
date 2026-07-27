@@ -6,8 +6,9 @@ import { brand } from "@/data/theme";
 
 export default function SportsPrograms() {
   return (
-    <section id="sports" className={`py-24 ${brand.surface.section}`}>      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+    <section id="sports" className={`py-16 sm:py-20 ${brand.surface.section}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
           <span className="text-4xl mb-4 block">🏆</span>
           <h2 className="section-heading">Our Sports Programs</h2>
           <p className="section-subheading">
@@ -15,7 +16,7 @@ export default function SportsPrograms() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {sports.map((sport) => {
             const cover = getSportCover(sport.slug);
 
@@ -38,11 +39,11 @@ export default function SportsPrograms() {
                 ) : (
                   <div className={`h-2 bg-gradient-to-r ${sport.color}`} />
                 )}
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   {!cover && (
                     <span className="text-4xl mb-4 block">{sport.emoji}</span>
                   )}
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
                     <Link href={`/sports/${sport.slug}`}>{sport.name}</Link>
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
