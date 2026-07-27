@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
+  basePath: '/Smart-academy-',
+  assetPrefix: '/Smart-academy-',
+  images: { unoptimized: true },
   devIndicators: false,
 };
 
