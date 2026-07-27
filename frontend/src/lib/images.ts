@@ -1,6 +1,9 @@
 /** Build a public image URL from a filename in /public/images */
 export function imagePath(filename: string): string {
-  return `/images/${filename}`;
+  // Must include basePath for GitHub Pages project sites (and local next.dev with basePath).
+  // next/image with unoptimized static export does not rewrite these paths automatically.
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${base}/images/${filename}`;
 }
 
 export type SiteImage = {
