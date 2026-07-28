@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { sports } from "@/data/sports";
 import { siteImages } from "@/data/siteImages";
 import { ACADEMY_PHONE_DISPLAY } from "@/lib/contact";
@@ -42,12 +43,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm hover:text-emerald-400 transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -58,12 +59,12 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               {sports.map((sport) => (
                 <li key={sport.slug}>
-                  <a
+                  <Link
                     href={`/sports/${sport.slug}`}
                     className="hover:text-emerald-400 transition-colors"
                   >
                     {sport.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
