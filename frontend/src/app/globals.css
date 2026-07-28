@@ -6,6 +6,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Offset for fixed navbar when jumping to #sections */
+section[id],
+#home {
+  scroll-margin-top: 5rem;
+}
+
 body {
   @apply bg-emerald-50 text-gray-900 antialiased;
 }

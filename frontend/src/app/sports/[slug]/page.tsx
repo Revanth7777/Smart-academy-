@@ -8,6 +8,7 @@ import SiteImage from "@/components/SiteImage";
 import { getSportCover, siteImages } from "@/data/siteImages";
 import { getAllSportSlugs, getSportBySlug, sports } from "@/data/sports";
 import { brand } from "@/data/theme";
+import { homeSectionHref } from "@/lib/scroll";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -63,13 +64,13 @@ export default async function SportPage({ params }: PageProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/85 via-emerald-950/55 to-emerald-950/20" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-20 text-white">
             <div className="max-w-xl">
-              <Link
-                href="/#sports"
+              <a
+                href={homeSectionHref("sports")}
                 className="inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white mb-8"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Sports
-              </Link>
+              </a>
               <span className="text-4xl sm:text-5xl mb-3 sm:mb-4 block">{sport.emoji}</span>
               <p className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-2">
                 {sport.origin}
@@ -133,12 +134,12 @@ export default async function SportPage({ params }: PageProps) {
             <p className="text-white/90 mb-6 max-w-lg mx-auto">
               Book a trial session or enroll with our coaches and begin your journey.
             </p>
-            <Link
-              href="/#contact"
+            <a
+              href={homeSectionHref("contact")}
               className="inline-block px-6 py-3 rounded-full bg-white text-emerald-700 font-semibold hover:bg-emerald-50 transition-colors"
             >
               Enroll Now
-            </Link>
+            </a>
           </div>
 
           <div className="mt-12 sm:mt-16">

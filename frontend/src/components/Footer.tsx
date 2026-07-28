@@ -1,15 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import { sports } from "@/data/sports";
 import { siteImages } from "@/data/siteImages";
 import { ACADEMY_PHONE_DISPLAY } from "@/lib/contact";
+import { goToHomeSection, homeSectionHref } from "@/lib/scroll";
 
 const quickLinks = [
-  { href: "/#home", label: "Home" },
-  { href: "/#about", label: "About" },
-  { href: "/#sports", label: "Sports" },
-  { href: "/#events", label: "Events" },
-  { href: "/#gallery", label: "Gallery" },
-  { href: "/#contact", label: "Contact" },
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "sports", label: "Sports" },
+  { id: "events", label: "Events" },
+  { id: "gallery", label: "Gallery" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function Footer() {
@@ -42,13 +45,17 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
+                <li key={link.id}>
+                  <a
+                    href={homeSectionHref(link.id)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goToHomeSection(link.id);
+                    }}
                     className="text-sm hover:text-emerald-400 transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
