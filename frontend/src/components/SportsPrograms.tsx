@@ -1,11 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import SiteImage from "@/components/SiteImage";
 import { getSportCover } from "@/data/siteImages";
 import { sports } from "@/data/sports";
 import { brand } from "@/data/theme";
-import { goToHomeSection, homeSectionHref } from "@/lib/scroll";
 
 export default function SportsPrograms() {
   return (
@@ -59,16 +56,12 @@ export default function SportsPrograms() {
                     >
                       Learn more →
                     </Link>
-                    <a
-                      href={homeSectionHref("contact")}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        goToHomeSection("contact");
-                      }}
+                    <Link
+                      href="/#contact"
                       className="text-sm font-semibold text-emerald-600 hover:text-emerald-700"
                     >
                       Enroll Now →
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

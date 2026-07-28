@@ -1,41 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { siteImages } from "@/data/siteImages";
 import { brand } from "@/data/theme";
-import { goToHomeSection, homeSectionHref } from "@/lib/scroll";
 
 const navLinks = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "sports", label: "Sports" },
-  { id: "coaches", label: "Coaches" },
-  { id: "events", label: "Events" },
-  { id: "gallery", label: "Gallery" },
-  { id: "contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#sports", label: "Sports" },
+  { href: "/#coaches", label: "Coaches" },
+  { href: "/#events", label: "Events" },
+  { href: "/#gallery", label: "Gallery" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const onNav = (id: string) => {
-    setOpen(false);
-    goToHomeSection(id);
-  };
-
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 ${brand.surface.nav} backdrop-blur-md shadow-sm border-b border-emerald-200/50`}>
       <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20 gap-3">
-          <a
-            href={homeSectionHref("home")}
-            onClick={(e) => {
-              e.preventDefault();
-              onNav("home");
-            }}
-            className="flex items-center gap-2.5 sm:gap-3 group min-w-0"
-          >
+          <Link href="/#home" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
             {siteImages.logo ? (
               <img
                 src={siteImages.logo}
@@ -48,45 +36,33 @@ export default function Navbar() {
             <span className="hidden sm:block font-bold text-base md:text-lg text-gray-900 group-hover:text-emerald-600 transition-colors truncate">
               Smart Games & Academy
             </span>
-          </a>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={homeSectionHref(link.id)}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNav(link.id);
-                }}
+              <Link
+                key={link.href}
+                href={link.href}
                 className="text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a
-              href={homeSectionHref("contact")}
-              onClick={(e) => {
-                e.preventDefault();
-                onNav("contact");
-              }}
+            <Link
+              href="/#contact"
               className="px-5 py-2.5 text-sm font-semibold text-emerald-600 border-2 border-emerald-600 rounded-full hover:bg-emerald-50 transition-colors"
             >
               Join Now
-            </a>
-            <a
-              href={homeSectionHref("contact")}
-              onClick={(e) => {
-                e.preventDefault();
-                onNav("contact");
-              }}
+            </Link>
+            <Link
+              href="/#contact"
               className="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-emerald-500/25"
             >
               Book Trial
-            </a>
+            </Link>
           </div>
 
           <button
@@ -102,39 +78,30 @@ export default function Navbar() {
           <div className="lg:hidden pb-4 border-t border-emerald-200/60 max-h-[calc(100vh-5rem)] overflow-y-auto">
             <div className="flex flex-col gap-2 pt-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={homeSectionHref(link.id)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNav(link.id);
-                  }}
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
                   className="px-4 py-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="flex flex-col gap-2 px-4 pt-2">
-                <a
-                  href={homeSectionHref("contact")}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNav("contact");
-                  }}
+                <Link
+                  href="/#contact"
+                  onClick={() => setOpen(false)}
                   className="text-center py-2.5 font-semibold text-emerald-600 border-2 border-emerald-600 rounded-full"
                 >
                   Join Now
-                </a>
-                <a
-                  href={homeSectionHref("contact")}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNav("contact");
-                  }}
+                </Link>
+                <Link
+                  href="/#contact"
+                  onClick={() => setOpen(false)}
                   className="text-center py-2.5 font-semibold text-white bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full"
                 >
                   Book Trial
-                </a>
+                </Link>
               </div>
             </div>
           </div>
