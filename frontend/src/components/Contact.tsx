@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, Send } from "lucide-react";
 import {
+  ACADEMY_ADDRESS,
   ACADEMY_PHONE_DISPLAY,
+  academyMapsEmbedSrc,
+  academyMapsOpenHref,
   academyTelHref,
   academyWhatsAppHref,
 } from "@/lib/contact";
@@ -59,7 +62,8 @@ export default function Contact() {
               {
                 icon: MapPin,
                 label: "Academy Location",
-                value: "123 Sports Complex Road, Chennai - 600044",
+                value: ACADEMY_ADDRESS,
+                href: academyMapsOpenHref,
               },
               {
                 icon: Phone,
@@ -102,18 +106,26 @@ export default function Contact() {
               </div>
             ))}
 
-            <div className={`rounded-2xl overflow-hidden h-56 sm:h-64 bg-emerald-100/60 border ${brand.surface.cardBorder}`}>
+            <a
+              href={academyMapsOpenHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block relative rounded-2xl overflow-hidden h-56 sm:h-64 bg-emerald-100/60 border ${brand.surface.cardBorder}`}
+              aria-label="Open academy location in Google Maps"
+            >
               <iframe
                 title="Academy Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0!2d80.14!3d12.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU3JzAwLjAiTiA4MMKwMDgnMjQuMCJF!5e0!3m2!1sen!2sin!4v1"
+                src={academyMapsEmbedSrc}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                className="pointer-events-none w-full h-full"
               />
-            </div>
+              <span className="absolute inset-0 z-10" aria-hidden />
+            </a>
           </div>
 
           <form onSubmit={handleSubmit} className={`surface-card p-5 sm:p-8 space-y-5`}>

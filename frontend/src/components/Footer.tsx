@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { sports } from "@/data/sports";
 import { siteImages } from "@/data/siteImages";
-import { ACADEMY_PHONE_DISPLAY } from "@/lib/contact";
+import { ACADEMY_ADDRESS_LINES, ACADEMY_PHONE_DISPLAY, academyMapsOpenHref } from "@/lib/contact";
 import { goToHomeSection, homeSectionHref } from "@/lib/scroll";
 
 const quickLinks = [
@@ -80,8 +80,20 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Contact</h4>
             <ul className="space-y-2 text-sm">
-              <li>123 Sports Complex Road</li>
-              <li>Chennai - 600044</li>
+              <li>
+                <a
+                  href={academyMapsOpenHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-emerald-400 transition-colors"
+                >
+                  {ACADEMY_ADDRESS_LINES.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
+                </a>
+              </li>
               <li>{ACADEMY_PHONE_DISPLAY}</li>
               <li>smartgamesacademy2010@gmail.com</li>
             </ul>
