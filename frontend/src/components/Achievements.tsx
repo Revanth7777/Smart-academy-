@@ -23,7 +23,7 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <section id="coaches" className={`py-16 sm:py-20 bg-gradient-to-br ${brand.gradientDark} text-white`}>
+    <section id="achievements" className={`py-16 sm:py-20 bg-gradient-to-br ${brand.gradientDark} text-white`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Achievements</h2>

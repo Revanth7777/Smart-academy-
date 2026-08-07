@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { siteImages } from "@/data/siteImages";
 import { brand } from "@/data/theme";
 import { goToHomeSection, homeSectionHref } from "@/lib/scroll";
 
-const navLinks = [
+const navLinks: { id: string; label: string; href?: string }[] = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "sports", label: "Sports" },
-  { id: "coaches", label: "Coaches" },
+  { id: "coaches", label: "Coaches", href: "/coaches" },
   { id: "events", label: "Events" },
   { id: "gallery", label: "Gallery" },
   { id: "contact", label: "Contact" },
@@ -51,19 +52,29 @@ export default function Navbar() {
           </a>
 
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={homeSectionHref(link.id)}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNav(link.id);
-                }}
-                className="text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.href ? (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  className="text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.id}
+                  href={homeSectionHref(link.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNav(link.id);
+                  }}
+                  className="text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -101,19 +112,30 @@ export default function Navbar() {
         {open && (
           <div className="lg:hidden pb-4 border-t border-emerald-200/60 max-h-[calc(100vh-5rem)] overflow-y-auto">
             <div className="flex flex-col gap-2 pt-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={homeSectionHref(link.id)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNav(link.id);
-                  }}
-                  className="px-4 py-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.href ? (
+                  <Link
+                    key={link.id}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="px-4 py-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.id}
+                    href={homeSectionHref(link.id)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNav(link.id);
+                    }}
+                    className="px-4 py-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
               <div className="flex flex-col gap-2 px-4 pt-2">
                 <a
                   href={homeSectionHref("contact")}
